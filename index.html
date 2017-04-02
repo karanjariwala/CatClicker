@@ -3,26 +3,61 @@
 
 <head>
     <title>Cat Clicker</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div>
-        <ul id='catList'>
-        </ul>
-    </div>
-    <div id='catDetailView'>
-        <p id="catName"></p>
-        <img id="catImage" src="">
-        <p id='catClicks'></p>
-        <div class="admin">
-            <BUTTON id='admin'>Admin</BUTTON>
-            <div id="form" style="display:none">
-               Name of Cat   <input type="text" id='name' name="name">
-                Numbr of Clicks <input type="number"  id='clicks' name="clicks">
-                <button id='Submit'>Submit </button><button>Cancel</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p style="padding:20px;"></p>
+                <ul id='catList' class="list-group">
+                </ul>
+                 <p id='catClicks' class="text-center"></p>
+                  <p style="padding:10px;"></p>
+
+                <div class="admin">
+                    <BUTTON id='admin' class="btn btn-primary">Add Cat</BUTTON>
+                       <p style="padding:10px;"></p>
+                    <div id="form" style="display:none;" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" placeholder="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">clicks</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="clicks" placeholder="clicks">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="" id="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                                                   </div>
+                    </div>
+                </div>
+            </div>
+            <div id='catDetailView' class="col-md-8">
+            <p style="padding: 5px;"></p>
+            <p align="middle" id="info"> Click on the image to like</p>
+
+                <p id="catName" class=""></p>
+                <img id="catImage" src="" class="img-responsive img-rounded img-thumbnail " align="middle">
+                              </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="app.js"></script>
 </body>
 

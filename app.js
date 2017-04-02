@@ -2,60 +2,53 @@
     var model = {
         currentCat: 'Tabby',
         adminFormFlag: false,
-      cats: [
-        {
-            clickCount : 0,
-            name : 'Tabby',
-            imgSrc : 'img/434164568_fea0ad4013_z.jpg',
-            imgAttribution : 'https://www.flickr.com/photos/bigtallguy/434164568'
-        },
-        {
-            clickCount : 0,
-            name : 'Tiger',
-            imgSrc : 'img/4154543904_6e2428c421_z.jpg',
-            imgAttribution : 'https://www.flickr.com/photos/xshamx/4154543904'
-        },
-        {
-            clickCount : 0,
-            name : 'Scaredy',
-            imgSrc : 'img/22252709_010df3379e_z.jpg',
-            imgAttribution : 'https://www.flickr.com/photos/kpjas/22252709'
-        },
-        {
-            clickCount : 0,
-            name : 'Shadow',
-            imgSrc : 'img/1413379559_412a540d29_z.jpg',
-            imgAttribution : 'https://www.flickr.com/photos/malfet/1413379559'
-        },
-        {
-            clickCount : 0,
-            name : 'Sleepy',
-            imgSrc : 'img/9648464288_2516b35537_z.jpg',
-            imgAttribution : 'https://www.flickr.com/photos/onesharp/9648464288'
-        }
-    ]    }
+        cats: [{
+            clickCount: 0,
+            name: 'Tabby',
+            imgSrc: 'img/434164568_fea0ad4013_z.jpg',
+            imgAttribution: 'https://www.flickr.com/photos/bigtallguy/434164568'
+        }, {
+            clickCount: 0,
+            name: 'Tiger',
+            imgSrc: 'img/4154543904_6e2428c421_z.jpg',
+            imgAttribution: 'https://www.flickr.com/photos/xshamx/4154543904'
+        }, {
+            clickCount: 0,
+            name: 'Scaredy',
+            imgSrc: 'img/22252709_010df3379e_z.jpg',
+            imgAttribution: 'https://www.flickr.com/photos/kpjas/22252709'
+        }, {
+            clickCount: 0,
+            name: 'Shadow',
+            imgSrc: 'img/1413379559_412a540d29_z.jpg',
+            imgAttribution: 'https://www.flickr.com/photos/malfet/1413379559'
+        }, {
+            clickCount: 0,
+            name: 'Sleepy',
+            imgSrc: 'img/9648464288_2516b35537_z.jpg',
+            imgAttribution: 'https://www.flickr.com/photos/onesharp/9648464288'
+        }]
+    }
 
     var controller = {
-        setCatNameClick: function(name,click) {
-           for(let i=0;i<model.cats.length;i++)
-           {
-            if(model.cats[i].name==controller.getCurrentCat())
-            {
-                model.cats[i].name=name;
-                console.log(model.cats[i].name)
-                model.cats[i].clickCount=click;
-                controller.setCurrentCat(name);
+        setCatNameClick: function(name, click) {
+            for (let i = 0; i < model.cats.length; i++) {
+                if (model.cats[i].name == controller.getCurrentCat()) {
+                    model.cats[i].name = name;
+                    console.log(model.cats[i].name)
+                    model.cats[i].clickCount = click;
+                    controller.setCurrentCat(name);
                 }
                 //console.log (model.cats[i])
-           }
-          
+            }
+
 
 
 
         },
         // setCatClick: function(click) {
         //     model.cats.map(function(x) {
-                
+
         //         if (x.name == controller.getCurrentCat()) {
         //             console.log(x,click)
 
@@ -114,10 +107,10 @@
 
         },
         render: function() {
-            document.getElementById('catList').innerHTML='';
+            document.getElementById('catList').innerHTML = '';
             //controller.setAdminFormFlag();
 
-           // console.log(controller.getCats());
+            // console.log(controller.getCats());
             controller.getCats().map(function(x) {
                 Li = document.createElement('LI');
                 Li.innerHTML = x.name;
@@ -126,6 +119,8 @@
                     controller.setCurrentCat(x.name);
                     viewCatDetail.render();
                 })
+
+                Li.className = "list-group-item btn btn-block btn-primary";
                 document.getElementById('catList').appendChild(Li);
             })
 
@@ -144,8 +139,8 @@
                 viewCatDetail.render();
 
             });
-            document.getElementById('admin').addEventListener('click',  function() {
-                                if (!controller.getAdminFormFlag()) {
+            document.getElementById('admin').addEventListener('click', function() {
+                if (!controller.getAdminFormFlag()) {
                     document.getElementById('form').style.display = 'block';
                     console.log('true')
                     controller.setAdminFormFlag();
@@ -153,36 +148,37 @@
                     console.log('false')
                     document.getElementById('form').style.display = 'none';
                     controller.setAdminFormFlag();
-                }});
+                }
+            });
 
-                document.getElementById('Submit').addEventListener('click', function(event) {
+            document.getElementById('Submit').addEventListener('click', function(event) {
                 event.stopPropagation();
-                controller.setCatNameClick(document.getElementById('name').value,document.getElementById('clicks').value);
+                controller.setCatNameClick(document.getElementById('name').value, document.getElementById('clicks').value);
                 console.log(model.cats[0])
                 controller.setAdminFormFlag();
-               
-                 viewCatList.render()
+
+                viewCatList.render()
                 viewCatDetail.render();
 
-                
+
                 //controller.setCatClick();
-                
+
 
             })
 
 
 
-        
-            },
+
+        },
 
         render: function() {
             var name = document.getElementById('catName');
             var img = document.getElementById('catImage');
             var count = document.getElementById('catClicks');
             name.innerHTML = controller.getCurrentCat();
-            img.src = controller.getCat(controller.getCurrentCat())[0].imgSrc ;
-           // console.log(controller.getCat(controller.getCurrentCat())[0].clickCount);
-            count.innerHTML = controller.getCat(controller.getCurrentCat())[0].clickCount;
+            img.src = controller.getCat(controller.getCurrentCat())[0].imgSrc;
+            // console.log(controller.getCat(controller.getCurrentCat())[0].clickCount);
+            count.innerHTML = '       '+'<i class="fa fa-thumbs-up"></i>'+'    '+controller.getCat(controller.getCurrentCat())[0].clickCount ;
             //document.getElementById('admin').style.display='none';
             document.getElementById('form').style.display = 'none';
 
